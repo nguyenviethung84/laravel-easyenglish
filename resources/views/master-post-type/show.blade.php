@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('voyager::master')
 
 @section('template_title')
     {{ $masterPostType->name ?? "{{ __('Show') Master Post Type" }}
