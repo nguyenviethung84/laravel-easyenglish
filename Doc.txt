@@ -23,14 +23,11 @@ docker-compose exec laravel php artisan make:migration add_post_type_to_posts_ta
 docker-compose exec laravel php artisan make:model MasterPostType
 docker-compose exec laravel php artisan make:controller MasterPostTypeController
 
-docker-compose exec laravel composer require infyomlabs/laravel-generator
-docker-compose exec laravel php artisan make:
-docker-compose exec laravel php artisan infyom:scaffold Post
-docker-compose exec laravel php artisan infyom:scaffold $MODEL_NAME --views=index,create,edit,show
-docker-compose exec laravel php artisan infyom:scaffold PostType --views=index,create,edit,show
-docker-compose exec laravel composer remove infyomlabs/laravel-generator
-
 docker-compose exec laravel composer require ibex/crud-generator --dev
 docker-compose exec laravel php artisan vendor:publish --tag=crud
 docker-compose exec laravel php artisan make:crud master_post_type
 docker-compose exec laravel chmod -R 777 /var/www/html/storage 
+
+
+docker-compose exec laravel php artisan make:crud post
+docker-compose exec laravel composer require laravelcollective/html
