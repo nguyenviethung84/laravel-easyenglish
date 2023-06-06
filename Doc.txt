@@ -31,3 +31,13 @@ docker-compose exec laravel chmod -R 777 /var/www/html/storage
 
 docker-compose exec laravel php artisan make:crud post
 docker-compose exec laravel composer require laravelcollective/html
+docker-compose exec laravel composer require unisharp/laravel-filemanager
+docker-compose exec laravel php artisan vendor:publish --tag=lfm_config
+docker-compose exec laravel php artisan vendor:publish --tag=lfm_public
+docker-compose exec laravel php artisan storage:link
+
+docker-compose exec laravel composer require unisharp/laravel-filemanager
+
+======================================
+docker-compose exec laravel touch webpack.mix.js
+npx mix
