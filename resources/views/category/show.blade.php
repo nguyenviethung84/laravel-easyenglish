@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('voyager::master')
 
 @section('template_title')
     {{ $category->name ?? "{{ __('Show') Category" }}

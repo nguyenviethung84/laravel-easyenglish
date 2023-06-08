@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MasterPostTypeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,12 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/posts/edit/{id}', [PostController::class, 'edit'])->name('posts.edit');
     Route::post('/posts/update/{id}', [PostController::class, 'update'])->name('posts.update');
     Route::delete('/posts/delete/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::get('/categories/show/{id}', [PostController::class, 'show'])->name('categories.show');
+    Route::get('/categories/create', [PostController::class, 'create'])->name('categories.create');
+    Route::put('/categories/store', [PostController::class, 'store'])->name('categories.store');
+    Route::get('/categories/edit/{id}', [PostController::class, 'edit'])->name('categories.edit');
+    Route::post('/categories/update/{id}', [PostController::class, 'update'])->name('categories.update');
+    Route::delete('/categories/delete/{id}', [PostController::class, 'destroy'])->name('categories.destroy');
 });
