@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
 /**
- * Class PostController
+ * Class CategoryController
  * @package App\Http\Controllers
  */
-class PostController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +18,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate();
+        $categories = Category::paginate();
 
-        return view('post.index', compact('posts'))
-            ->with('i', (request()->input('page', 1) - 1) * $posts->perPage());
+        return view('category.index', compact('categories'))
+            ->with('i', (request()->input('page', 1) - 1) * $categories->perPage());
     }
 
     /**
@@ -32,9 +31,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        $post = new Post();
-        $categories = Category::all();
-        return view('post.create', compact('post', 'categories'));
+        $category = new Category();
+        return view('category.create', compact('category'));
     }
 
     /**
@@ -45,12 +43,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Post::$rules);
+        request()->validate(Category::$rules);
 
-        $post = Post::create($request->all());
+        $category = Category::create($request->all());
 
-        return redirect()->route('posts.index')
-            ->with('success', 'Post created successfully.');
+        return redirect()->route('categories.index')
+            ->with('success', 'Category created successfully.');
     }
 
     /**
@@ -61,9 +59,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
+        $category = Category::find($id);
 
-        return view('post.show', compact('post'));
+        return view('category.show', compact('category'));
     }
 
     /**
@@ -74,31 +72,26 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::find($id);
-        $categories = Category::all();
+        $category = Category::find($id);
 
-        return view('post.edit', compact('post', 'categories'));
+        return view('category.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param  Category $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        request()->validate(Post::$rules);
+        request()->validate(Category::$rules);
 
-        $post = Post::find($id);
-        $post->update($request->all());
-        // dd($id);
-        // dd($post);
-        // dd($request->all());
+        $category->update($request->all());
 
-        return redirect()->route('posts.index')
-            ->with('success', 'Post updated successfully');
+        return redirect()->route('categories.index')
+            ->with('success', 'Category updated successfully');
     }
 
     /**
@@ -108,9 +101,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id)->delete();
+        $category = Category::find($id)->delete();
 
-        return redirect()->route('posts.index')
-            ->with('success', 'Post deleted successfully');
+        return redirect()->route('categories.index')
+            ->with('success', 'Category deleted successfully');
     }
 }
