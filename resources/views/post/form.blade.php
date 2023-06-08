@@ -77,14 +77,24 @@
             {!! $errors->first('meta_keywords', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('status') }}
-            {{ Form::text('status', $post->status, ['class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'placeholder' => 'Status']) }}
-            {!! $errors->first('status', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('post_type') }}
+            <!-- {{ Form::text('post_type', $post->post_type, ['class' => 'form-control' . ($errors->has('post_type') ? ' is-invalid' : ''), 'placeholder' => 'Post Type']) }} -->
+            <select class="form-control" id="post_type" name="post_type">
+                @foreach($postTypes AS $postType)
+                <option value="{{ $postType }}" @if ($postType == $post->post_type) selected="selected"@endif>{{ $postType }}</option>
+                @endforeach
+            </select>
+            {!! $errors->first('post_type', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('post_type') }}
-            {{ Form::text('post_type', $post->post_type, ['class' => 'form-control' . ($errors->has('post_type') ? ' is-invalid' : ''), 'placeholder' => 'Post Type']) }}
-            {!! $errors->first('post_type', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('status') }}
+            <!-- {{ Form::text('status', $post->status, ['class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'placeholder' => 'Status']) }} -->
+            <select class="form-control" id="status" name="status">
+                @foreach($statuss AS $status)
+                <option value="{{ $status }}" @if ($status == $post->status) selected="selected"@endif>{{ $status }}</option>
+                @endforeach
+            </select>
+            {!! $errors->first('status', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
     </div>
