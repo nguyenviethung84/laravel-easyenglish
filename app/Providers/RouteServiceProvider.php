@@ -36,6 +36,7 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+        $this->mapApiRoutes();
     }
 
     /**
@@ -49,4 +50,27 @@ class RouteServiceProvider extends ServiceProvider
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
     }
+
+    /**
+     * Define the "api" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapApiRoutes()
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api/v1/api.php'));
+    }
+
+    // protected function mapApiv2Routes()
+    // {
+    //     Route::prefix('api')
+    //         ->middleware('api')
+    //         ->namespace($this->namespace)
+    //         ->group(base_path('routes/api/v2/api.php'));
+    // }
 }
