@@ -29,9 +29,6 @@ class Category extends Model
 		'slug' => 'required',
     ];
 
-    static $postType = ['EASY', 'DIFFICULT'];
-    static $status = ['PUBLISHED', 'DRAFT', 'PENDING'];
-
     protected $perPage = 20;
 
     /**

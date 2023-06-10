@@ -81,13 +81,14 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Category $category
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
         request()->validate(Category::$rules);
 
+        $category = Category::find($id);
         $category->update($request->all());
 
         return redirect()->route('categories.index')

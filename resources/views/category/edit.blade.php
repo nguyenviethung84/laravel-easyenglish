@@ -17,7 +17,6 @@
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('categories.update', $category->id) }}"  role="form" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
                             @csrf
 
                             @include('category.form')
