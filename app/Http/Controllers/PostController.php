@@ -49,11 +49,14 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate(Post::$rules);
-
-        $fileName = time() . '.' . $request->image->extension();
-        $request->image->storeAs('public/posts', $fileName);
         $data = $request->all();
-        $data['image'] = 'posts/'.$fileName;
+
+        if(isset($request->image)){
+            $fileName = time() . '.' . $request->image->extension();
+            $request->image->storeAs('public/posts', $fileName);
+            $data['image'] = 'posts/'.$fileName;
+        }
+        
         $post = Post::create($data);
 
         return redirect()->route('posts.index')
@@ -105,12 +108,14 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate(Post::$rules);
-
-        $post = Post::find($id);
-        $fileName = time() . '.' . $request->image->extension();
-        $request->image->storeAs('public/posts', $fileName);
         $data = $request->all();
-        $data['image'] = 'posts/'.$fileName;
+        $post = Post::find($id);
+
+        if(isset($request->image)){
+            $fileName = time() . '.' . $request->image->extension();
+            $request->image->storeAs('public/posts', $fileName);
+            $data['image'] = 'posts/'.$fileName;
+        }
         $post->update($data);
 
         return redirect()->route('posts.index')

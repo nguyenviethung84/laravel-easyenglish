@@ -17,7 +17,6 @@ class PostController extends Controller{
      */
     public function get_latest_posts(Request $request)
     {
-        print($request['post_type']);
         $request['post_type'] = isset($request['post_type'])? $request['post_type'] : 'EASY';
         $request['limit'] = isset($request['limit'])? $request['limit'] : 10;
         $request['offset'] = isset($request['offset'])? $request['offset'] : 1;
