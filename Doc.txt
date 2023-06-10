@@ -17,6 +17,10 @@ password: password
 
 ==========================
 
+docker exec -it 55f2241bcf6f /bin/bash
+php artisan --version
+
+
 docker-compose exec laravel php artisan make:migration create_master_post_type_table
 docker-compose exec laravel php artisan make:migration add_post_type_to_posts_table
 
