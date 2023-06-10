@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->tinyInteger('post_type')->default(1);
+            $table->enum('post_type', ['EASY', 'DIFFICULT']);
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->tinyInteger('post_type');
+            $table->enum('post_type', ['EASY', 'DIFFICULT']);
         });
     }
 };
