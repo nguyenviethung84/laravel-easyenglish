@@ -29,31 +29,34 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Post extends Model
 {
+
+  static $postType = ['EASY', 'DIFFICULT'];
+  static $status = ['PUBLISHED', 'DRAFT', 'PENDING'];
     
-    static $rules = [
-		'title' => 'required',
-		'body' => 'required',
-		'slug' => 'required',
-		// 'status' => 'required',
-		// 'post_type' => 'required',
+  static $rules = [
+    'title' => 'required',
+    'body' => 'required',
+    'slug' => 'required',
+    // 'status' => 'required',
+    // 'post_type' => 'required',
     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-    ];
+  ];
 
-    protected $perPage = 20;
+  protected $perPage = 20;
 
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['author_id','category_id','title','seo_title','excerpt','body','image','slug','meta_description','meta_keywords','status','featured','post_type'];
+  /**
+   * Attributes that should be mass-assignable.
+   *
+   * @var array
+   */
+  protected $fillable = ['author_id','category_id','title','seo_title','excerpt','body','image','slug','meta_description','meta_keywords','status','featured','post_type'];
 
 
-    /**
-     * Get the category.
-     */
-    public function category()
-    {
-        return $this->belongsTo('App\Models\Category');
-    }
+  /**
+   * Get the category.
+   */
+  public function category()
+  {
+      return $this->belongsTo('App\Models\Category');
+  }
 }

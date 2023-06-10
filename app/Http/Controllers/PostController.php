@@ -34,8 +34,8 @@ class PostController extends Controller
     {
         $post = new Post();
         $categories = Category::all();
-        $postTypes = Category::$postType;
-        $statuss = Category::$status;
+        $postTypes = Post::$postType;
+        $statuss = Post::$status;
 
         return view('post.create', compact('post', 'categories', 'postTypes', 'statuss'));
     }
@@ -89,8 +89,8 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $categories = Category::all();
-        $postTypes = Category::$postType;
-        $statuss = Category::$status;
+        $postTypes = Post::$postType;
+        $statuss = Post::$status;
 
         return view('post.edit', compact('post', 'categories', 'postTypes', 'statuss'));
     }
