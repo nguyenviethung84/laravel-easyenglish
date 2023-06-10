@@ -36,6 +36,7 @@ class Post extends Model
 		'slug' => 'required',
 		// 'status' => 'required',
 		// 'post_type' => 'required',
+    'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
     ];
 
     protected $perPage = 20;
@@ -48,5 +49,11 @@ class Post extends Model
     protected $fillable = ['author_id','category_id','title','seo_title','excerpt','body','image','slug','meta_description','meta_keywords','status','featured','post_type'];
 
 
-
+    /**
+     * Get the category.
+     */
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category');
+    }
 }

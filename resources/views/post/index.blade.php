@@ -36,12 +36,10 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<!-- <th>Author Id</th>
-										<th>Category Id</th> -->
+										<!-- <th>Author Id</th> -->
 										<th>Title</th>
+										<th>Category</th>
 										<th>Seo Title</th>
-										<!-- <th>Excerpt</th> -->
-										<!-- <th>Body</th> -->
 										<th>Image</th>
 										<th>Slug</th>
 										<th>Meta Description</th>
@@ -58,9 +56,9 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<!-- <td>{{ $post->author_id }}</td>
-											<td>{{ $post->category_id }}</td> -->
+											<!-- <td>{{ $post->author_id }}</td> -->
 											<td>{{ $post->title }}</td>
+											<td>{{ $post->category->name }}</td>
 											<td>{{ $post->seo_title }}</td>
 											<!-- <td>{{ $post->excerpt }}</td> -->
 											<!-- <td>{{ $post->body }}</td> -->

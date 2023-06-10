@@ -57,6 +57,12 @@
 
         <div class="form-group">
             {{ Form::label('image') }}
+            @if(isset($post->image) && $post->image)
+                {{ Html::image('storage/'.$post->image, 'alt text', array('id' => 'preview', 'class' => 'css-class', 'style' => 'width:200px;')) }}
+            @else
+                <img id="preview" src="#" alt="your image" class="mt-3" style="display:none;width:200px;"/>
+            @endif
+
             {{ Form::file('image')}}
             <!-- {{ Form::text('image', $post->image, ['class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''), 'placeholder' => 'Image']) }} -->
             {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
@@ -110,51 +116,20 @@
 @push('javascript')
     <script>
         $(document).ready(function() {
-            // var route_prefix = "http://localhost/laravel-filemanager/";
-            // $('#lfm').filemanager('image', {prefix: route_prefix});
-            // var editor_config = {
-            //     path_absolute : "/",
-            //     selector: 'textarea.richTextBox[name="abc"]',
-            //     height:350,
-            //     relative_urls: false,
-            //     plugins: [
-            //     "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-            //     "searchreplace wordcount visualblocks visualchars code fullscreen",
-            //     "insertdatetime media nonbreaking save table directionality",
-            //     "emoticons template paste textpattern"
-            //     ],
-            //     toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
-            //     file_picker_callback : function(callback, value, meta) {
-            //     var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
-            //     var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
-
-            //     var cmsURL = editor_config.path_absolute + 'TinyMCE5/laravel-filemanager?editor=' + meta.fieldname;
-            //     if (meta.filetype == 'image') {
-            //         cmsURL = cmsURL + "&type=Images";
-            //     } else {
-            //         cmsURL = cmsURL + "&type=Files";
-            //     }
-
-            //     tinyMCE.activeEditor.windowManager.openUrl({
-            //         url : cmsURL,
-            //         title : 'Filemanager',
-            //         width : x * 0.8,
-            //         height : y * 0.8,
-            //         resizable : "yes",
-            //         close_previous : "no",
-            //         onMessage: (api, message) => {
-            //         callback(message.content);
-            //         }
-            //     });
-            //     }
-            // };
-            // tinymce.init(window.voyagerTinyMCE.getConfig(editor_config));
-
             var additionalConfig = {
                 selector: 'textarea.richTextBox[name="body"]',
             }
             $.extend(additionalConfig, {!! json_encode($options->tinymceOptions ?? '{}') !!})
             tinymce.init(window.voyagerTinyMCE.getConfig(additionalConfig));
+
+            image.onchange = evt => {
+                preview = document.getElementById('preview');
+                preview.style.display = 'block';
+                const [file] = image.files
+                if (file) {
+                    preview.src = URL.createObjectURL(file)
+                }
+            }
         });
     </script>
 @endpush

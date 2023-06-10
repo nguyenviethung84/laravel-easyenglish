@@ -48,13 +48,23 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Post::$rules);
+        $request->validate(Post::$rules);
 
-        $post = Post::create($request->all());
+        $fileName = time() . '.' . $request->image->extension();
+        $request->image->storeAs('public/posts', $fileName);
+        $data = $request->all();
+        $data['image'] = 'posts/'.$fileName;
+        $post = Post::create($data);
 
         return redirect()->route('posts.index')
             ->with('success', 'Post created successfully.');
     }
+    protected function storeImage(Request $request) {
+        $fileName = time() . '.' . $request->image->extension();
+        $path = $request->image->storeAs('public/posts', $fileName);
+        return substr($path, strlen('public/'));
+    }
+      
 
     /**
      * Display the specified resource.
@@ -94,13 +104,14 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        request()->validate(Post::$rules);
+        $request->validate(Post::$rules);
 
         $post = Post::find($id);
-        $post->update($request->all());
-        // dd($id);
-        // dd($post);
-        // dd($request->all());
+        $fileName = time() . '.' . $request->image->extension();
+        $request->image->storeAs('public/posts', $fileName);
+        $data = $request->all();
+        $data['image'] = 'posts/'.$fileName;
+        $post->update($data);
 
         return redirect()->route('posts.index')
             ->with('success', 'Post updated successfully');

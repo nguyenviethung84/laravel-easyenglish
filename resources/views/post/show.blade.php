@@ -26,7 +26,8 @@
                         </div> -->
                         <div class="form-group">
                             <strong>Category Id:</strong>
-                            {{ $post->category_id }}
+                            <!-- {{ $post->category_id }} -->
+                            {{ $post->category->name }}
                         </div>
                         <div class="form-group">
                             <strong>Title:</strong>
@@ -42,7 +43,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Body:</strong>
-                            {{ $post->body }}
+                            {!! $post->body !!}
                         </div>
                         <div class="form-group">
                             <strong>Image:</strong>
