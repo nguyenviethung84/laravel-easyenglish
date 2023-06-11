@@ -56,6 +56,7 @@ class PostController extends Controller
             $request->image->storeAs('public/posts', $fileName);
             $data['image'] = 'posts/'.$fileName;
         }
+        $data['author_id'] = 0;
         
         $post = Post::create($data);
 
@@ -116,6 +117,7 @@ class PostController extends Controller
             $request->image->storeAs('public/posts', $fileName);
             $data['image'] = 'posts/'.$fileName;
         }
+        $data['author_id'] = 0;
         $post->update($data);
 
         return redirect()->route('posts.index')
