@@ -35,8 +35,8 @@ class Post extends Model
     
   static $rules = [
     'title' => 'required',
-    'body' => 'required',
-    'slug' => 'required',
+    // 'body' => 'required',
+    // 'slug' => 'required',
     // 'status' => 'required',
     // 'post_type' => 'required',
     // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
