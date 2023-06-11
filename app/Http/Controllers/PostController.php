@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 /**
  * Class PostController
@@ -57,6 +58,7 @@ class PostController extends Controller
             $data['image'] = 'posts/'.$fileName;
         }
         $data['author_id'] = 0;
+        $data['slug'] = Str::slug($data['title']);
         
         $post = Post::create($data);
 
@@ -118,6 +120,7 @@ class PostController extends Controller
             $data['image'] = 'posts/'.$fileName;
         }
         $data['author_id'] = 0;
+        $data['slug'] = Str::slug($data['title']);
         $post->update($data);
 
         return redirect()->route('posts.index')

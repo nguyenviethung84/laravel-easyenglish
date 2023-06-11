@@ -34,16 +34,16 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
+                                        <th>Id</th>
                                         
 										<!-- <th>Author Id</th> -->
 										<th>Title</th>
 										<th>Category</th>
-										<th>Seo Title</th>
+										{{-- <th>Seo Title</th> --}}
 										<th>Image</th>
 										<th>Slug</th>
-										<th>Meta Description</th>
-										<th>Meta Keywords</th>
+										{{-- <th>Meta Description</th> --}}
+										{{-- <th>Meta Keywords</th> --}}
 										<th>Status</th>
 										<!-- <th>Featured</th> -->
 										<th>Post Type</th>
@@ -54,18 +54,18 @@
                                 <tbody>
                                     @foreach ($posts as $post)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $post->id }}</td>
                                             
 											<!-- <td>{{ $post->author_id }}</td> -->
 											<td>{{ $post->title }}</td>
 											<td>{{ $post->category->name }}</td>
-											<td>{{ $post->seo_title }}</td>
+											{{-- <td>{{ $post->seo_title }}</td> --}}
 											<!-- <td>{{ $post->excerpt }}</td> -->
 											<!-- <td>{{ $post->body }}</td> -->
 											<td>{{ Html::image('storage/'.$post->image, 'alt text', array('class' => 'css-class', 'style' => 'width:100px;')) }}</td>
 											<td>{{ $post->slug }}</td>
-											<td>{{ $post->meta_description }}</td>
-											<td>{{ $post->meta_keywords }}</td>
+											{{-- <td>{{ $post->meta_description }}</td> --}}
+											{{-- <td>{{ $post->meta_keywords }}</td> --}}
 											<td>{{ $post->status }}</td>
 											<!-- <td>{{ $post->featured }}</td> -->
 											<td>{{ $post->post_type }}</td>

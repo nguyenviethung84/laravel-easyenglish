@@ -25,42 +25,41 @@
                             {{ $post->author_id }}
                         </div> -->
                         <div class="form-group">
-                            <strong>Category Id:</strong>
-                            <!-- {{ $post->category_id }} -->
-                            {{ $post->category->name }}
-                        </div>
-                        <div class="form-group">
                             <strong>Title:</strong>
                             {{ $post->title }}
                         </div>
                         <div class="form-group">
+                            <strong>Category Id:</strong>
+                            {{ $post->category->name }}
+                        </div>
+                        <!-- <div class="form-group">
                             <strong>Seo Title:</strong>
                             {{ $post->seo_title }}
-                        </div>
-                        <div class="form-group">
+                        </div> -->
+                        <!-- <div class="form-group">
                             <strong>Excerpt:</strong>
                             {{ $post->excerpt }}
+                        </div> -->
+                        <div class="form-group">
+                            <strong>Image:</strong>
+                            {{ Html::image('storage/'.$post->image, 'alt text', array('class' => 'css-class', 'style' => 'width:200px;')) }}
                         </div>
                         <div class="form-group">
                             <strong>Body:</strong>
                             {!! $post->body !!}
                         </div>
                         <div class="form-group">
-                            <strong>Image:</strong>
-                            {{ Html::image('storage/'.$post->image, 'alt text', array('class' => 'css-class', 'style' => 'width:200px;')) }}
-                        </div>
-                        <div class="form-group">
                             <strong>Slug:</strong>
                             {{ $post->slug }}
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <strong>Meta Description:</strong>
                             {{ $post->meta_description }}
-                        </div>
-                        <div class="form-group">
+                        </div> -->
+                        <!-- <div class="form-group">
                             <strong>Meta Keywords:</strong>
                             {{ $post->meta_keywords }}
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <strong>Status:</strong>
                             {{ $post->status }}
