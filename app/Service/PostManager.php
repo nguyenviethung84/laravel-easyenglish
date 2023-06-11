@@ -24,7 +24,7 @@ class PostManager{
             $data[] = [
                 'id' => $item['id'],
                 'title' => $item['title'],
-                'urlToImage' => asset($item['image']),
+                'urlToImage' => asset('storage/'.$item['image']),
                 'content' => $item['body'],
             ];
         }
