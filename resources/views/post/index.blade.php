@@ -58,7 +58,7 @@
                                             
 											<!-- <td>{{ $post->author_id }}</td> -->
 											{{-- <td>{{ $post->title }}</td> --}}
-											<td>{{ \Illuminate\Support\Str::limit($post->title, 50, $end='...') }}</td>
+											<td>{{ \Illuminate\Support\Str::limit($post->title, 100, $end='...') }}</td>
 											<td>{{ $post->category->name }}</td>
 											{{-- <td>{{ $post->seo_title }}</td> --}}
 											<!-- <td>{{ $post->excerpt }}</td> -->
