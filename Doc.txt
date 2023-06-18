@@ -16,6 +16,7 @@ email: admin@admin.com
 password: password
 
 ==========================
+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
 sudo chmod o+w ./storage/ -R
 docker exec -it 55f2241bcf6f /bin/bash
 php artisan --version
