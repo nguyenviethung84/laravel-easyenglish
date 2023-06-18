@@ -25,7 +25,7 @@ class PostManager{
                 'id' => $item['id'],
                 'title' => $item['title'],
                 'urlToImage' => asset('storage/'.$item['image']),
-                'content' => $item['body'],
+                'content' => strip_tags($item['body']),
             ];
         }
 
