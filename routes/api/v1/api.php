@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\v1\PostController;
+use App\Http\Controllers\api\v1\WordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,8 @@ use App\Http\Controllers\api\v1\PostController;
         // Route::post('reviews/submit', 'ProductController@submit_product_review')->middleware('auth:api');
 
         Route::get('/latest', [PostController::class, 'get_latest_posts']);
+    });
+    Route::group(['prefix' => 'edict'], function () {
+        Route::get('/word', [WordController::class, 'get_word']);
     });
 });
