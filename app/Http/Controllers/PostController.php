@@ -20,7 +20,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
 
         return view('post.index', compact('posts'))
             ->with('i', (request()->input('page', 1) - 1) * $posts->perPage());
