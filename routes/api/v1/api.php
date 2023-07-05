@@ -33,6 +33,6 @@ use App\Http\Controllers\api\v1\WordController;
         Route::get('/latest', [PostController::class, 'get_latest_posts']);
     });
     Route::group(['prefix' => 'edict'], function () {
-        Route::get('/word', [WordController::class, 'get_word']);
+        Route::get('/search', [WordController::class, 'get_word']);
     });
 });
