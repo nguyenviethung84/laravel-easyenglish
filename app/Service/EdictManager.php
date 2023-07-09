@@ -20,7 +20,7 @@ class EdictManager{
         foreach($paginator->items() as $item){
             $data[] = [
                 'word' => $item['word'],
-                'detail' => $item['detail'],
+                'detail' => str_replace(array("<C><F><I><N><Q>", "</Q></N></I></F></C>"), "", $item['detail']),
             ];
         }
 
